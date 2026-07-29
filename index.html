@@ -766,7 +766,15 @@ function enterCelebrationPage(){
 }
 
 function blowCandles(){
-  document.getElementById('cakeSvg').classList.toggle('blown');
+  var svg = document.getElementById('cakeSvg');
+  if(!svg) return;
+  svg.classList.add('blown');
+  var flames = svg.querySelectorAll('.candle-flame');
+  for(var i=0;i<flames.length;i++){
+    flames[i].style.opacity = '0';
+  }
+  var hint = document.querySelector('.cake-hint');
+  if(hint) hint.textContent = 'candles blown out ✦ make a wish';
 }
 
 function toggleSongPause(){
